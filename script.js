@@ -64,7 +64,7 @@ function writePassword() {
         
       } else if ((upinclude === false) && (numinclude === true) && (spcinclude === false)){
         
-        let options = lletters.concat(numberc, specialc)
+        let options = lletters.concat(numberc)
         return options
         
       } else if ((upinclude === false) && (numinclude === false) && (spcinclude === true)){

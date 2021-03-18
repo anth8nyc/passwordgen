@@ -2,8 +2,6 @@
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-
-
 // Arrays of characters
 
 let lletters = "abcdefghijklmnopqrstuvwxyz".split(""); 
@@ -13,7 +11,6 @@ let specialc1 = ["'", '"', "\\"];
 let specialc2 = " !#$%&()*+,-./:;<=>?@[]^_`{|}~".split("");
 let specialc = specialc1.concat(specialc2);
 let allc = lletters.concat(uletters, numberc, specialc)
-
 
 function writePassword() {
   
@@ -26,113 +23,68 @@ function writePassword() {
   function generatePassword(){
     
     let charcount = prompt("Specify password character count with number between 8 - 128: ");
+    
+    if (isNaN(charcount)) {
+      alert("Please input a number value specifying a password length between 8 - 128 characters and try again.")
+      return      
+    } else {
+      
+    }
+    
     let charcountn = parseInt(charcount, 10);
     
     if ((charcountn > 128)||(charcountn < 8)) {
-      alert("Password character length must be between 8 - 128 characters. Please try again")
+      alert("Password character length must be between 8 - 128 characters-- please try again.")
       return
     } else{
     }
+    
   
     
     
 
     function buildoptions(){
       
-      let loinclude = confirm("Include lowercase character? \nLowercase letters are used by default if no character type is selected.")
+      let loinclude = confirm("Include lowercase character?")
       let upinclude = confirm("Include uppercase characters?");
       let numinclude = confirm("Include number characters?");
       let spcinclude = confirm("Include special characters?");
       
+      let q1 = [""];
+      let q2 = [""];
+      let q3 = [""];
+      let q4 = [""];
       
-      if ((loinclude === true) && (upinclude === true) && (numinclude === true) && (spcinclude === true)) {
-        
-        let options = lletters.concat(uletters, numberc, specialc) 
-        return options       
-        
-      } else if ((loinclude === true) && (upinclude === true) && (numinclude === true) && (spcinclude === false)){
-        
-        let options = lletters.concat(uletters, numberc)
-        return options;
-        
-      } else if ((loinclude === true) && (upinclude === true) && (numinclude === false) && (spcinclude === false)){
-        
-        let options = lletters.concat(uletters)
-        return options
-        
-      } else if ((loinclude === true) && (upinclude === false) && (numinclude === false) && (spcinclude === false)){
-        
-        let options = lletters
-        return options
-        
-      } else if ((loinclude === true) && (upinclude === false) && (numinclude === true) && (spcinclude === true)){
-        
-        let options = lletters.concat(numberc, specialc)
-        return options
-        
-      } else if ((loinclude === true) && (upinclude === false) && (numinclude === true) && (spcinclude === false)){
-        
-        let options = lletters.concat(numberc, specialc)
-        return options
-        
-      } else if ((loinclude === true) && (upinclude === false) && (numinclude === false) && (spcinclude === true)){
-        
-        let options = lletters.concat(specialc)
-        return options
-        
-      } else if ((loinclude === true) && (upinclude === true) && (numinclude === false) && (spcinclude === true)){
-        
-        let options = lletters.concat(uletters, specialc)
-        return options
 
-      } else if ((loinclude === false) && (upinclude === true) && (numinclude === true) && (spcinclude === true)) {
-        
-        let options = uletters.concat(numberc, specialc) 
-        return options       
-        
-      } else if ((loinclude === false) && (upinclude === true) && (numinclude === true) && (spcinclude === false)){
-        
-        let options = uletters.concat(numberc)
-        return options;
-        
-      } else if ((loinclude === false) && (upinclude === true) && (numinclude === false) && (spcinclude === false)){
-        
-        let options = (uletters)
-        return options
-        
-      } else if ((loinclude === false) && (upinclude === false) && (numinclude === false) && (spcinclude === false)){
-        
-        alert("At least one character type must be selected. Using default (lowercase only) for password generation. Please try again for different character type.")
-        let options = lletters
-        return options
-        
-      } else if ((loinclude === false) && (upinclude === false) && (numinclude === true) && (spcinclude === true)){
-        
-        let options = numberc.concat(specialc)
-        return options
-        
-      } else if ((loinclude === false) && (upinclude === false) && (numinclude === true) && (spcinclude === false)){
-        
-        let options = numberc
-        return options
-        
-      } else if ((loinclude === false) && (upinclude === false) && (numinclude === false) && (spcinclude === true)){
-        
-        let options = specialc
-        return options
-        
-      } else if ((loinclude === false) && (upinclude === true) && (numinclude === false) && (spcinclude === true)){
-        
-        let options = uletters.concat(specialc)
-        return options
+      if (loinclude === true) {
+        q1 = lletters.concat(q1)
+      }else{}
+      
+      if (upinclude === true) {
+        q2 = uletters.concat(q2)
+      }else{}
+      
+      if (numinclude === true) {
+        q3 = numberc.concat(q3)
+      }else{}
+      
+      if (spcinclude === true) {
+        q4 = specialc.concat(q4)
+      }else{}
 
-      } else {
+      if ((loinclude === false)&&(upinclude === false)&&(numinclude === false)&&(spcinclude === false)){
 
-      }  
-      return            
+        alert("At least one character type must be selected. Please try again for different character type.")
+        return
+      } else { 
+
+      }
+      
+      let options = q1.concat(q2, q3, q4)
+      return options
+
     }       
       
-    
     let options = buildoptions();
     var output = "";
     var asize = options.length;
@@ -141,8 +93,10 @@ function writePassword() {
     } return output;    
     
   }  
-  
+
 }
+
+generateBtn.addEventListener("click", writePassword);
 
 // if ((charcountn < 129) && (charcountn > 7)) {
   
@@ -155,6 +109,5 @@ function writePassword() {
 // }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 

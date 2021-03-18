@@ -28,9 +28,17 @@ function writePassword() {
     let charcount = prompt("Specify password character count with number between 8 - 128: ");
     let charcountn = parseInt(charcount, 10);
     
+    if ((charcountn > 128)||(charcountn < 8)) {
+      alert("Password character length must be between 8 - 128 characters. Please try again")
+      return
+    } else{
+    }
+  
     
     
+
     function buildoptions(){
+      
       
       let upinclude = confirm("Include uppercase characters?");
       let numinclude = confirm("Include number characters?");
@@ -72,7 +80,7 @@ function writePassword() {
         let options = lletters.concat(specialc)
         return options
         
-        // if ((upinclude === true) && (numinclude === false) && (spcinclude === true)
+        // only (upinclude === true) && (numinclude === false) && (spcinclude === true) remaining  
       } else {
         
         let options = lletters.concat(uletters, specialc)

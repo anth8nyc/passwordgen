@@ -14,6 +14,37 @@ let allc = lletters.concat(uletters, numberc, specialc)
 
 function writePassword() {
   
+  let charcount = prompt("Specify password character count with number between 8 - 128: ");
+  
+  if (isNaN(charcount)) {
+    alert("Please input a number value specifying a password length between 8 - 128 characters and try again.")
+    return      
+  } else {
+    
+  }
+  
+  let charcountn = parseInt(charcount, 10);
+  
+  if ((charcountn > 128)||(charcountn < 8)) {
+    alert("Password character length must be between 8 - 128 characters-- please try again.")
+    return
+  } else{
+  }
+  
+
+  let loinclude = confirm("Include lowercase character?")
+  let upinclude = confirm("Include uppercase characters?");
+  let numinclude = confirm("Include number characters?");
+  let spcinclude = confirm("Include special characters?");
+
+  if ((loinclude === false)&&(upinclude === false)&&(numinclude === false)&&(spcinclude === false)){
+
+    alert("At least one character type must be selected. Please try again for different character type.")
+    return
+  } else { 
+
+  }
+  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   
@@ -22,22 +53,6 @@ function writePassword() {
   
   function generatePassword(){
     
-    let charcount = prompt("Specify password character count with number between 8 - 128: ");
-    
-    if (isNaN(charcount)) {
-      alert("Please input a number value specifying a password length between 8 - 128 characters and try again.")
-      return      
-    } else {
-      
-    }
-    
-    let charcountn = parseInt(charcount, 10);
-    
-    if ((charcountn > 128)||(charcountn < 8)) {
-      alert("Password character length must be between 8 - 128 characters-- please try again.")
-      return
-    } else{
-    }
     
   
     
@@ -45,51 +60,30 @@ function writePassword() {
 
     function buildoptions(){
       
-      let loinclude = confirm("Include lowercase character?")
-      let upinclude = confirm("Include uppercase characters?");
-      let numinclude = confirm("Include number characters?");
-      let spcinclude = confirm("Include special characters?");
-      
-      // let q1 = [""];
-      // let q2 = [""];
-      // let q3 = [""];
-      // let q4 = [""];
-      
+
       let options = [];
 
       if (loinclude === true) {
-        // q1 = lletters.concat(q1)
+        
         options = options.concat(lletters)
-
       }
       
       if (upinclude === true) {
-        // q2 = uletters.concat(q2)
+        
         options = options.concat(uletters)
-
       }
       
       if (numinclude === true) {
-        // q3 = numberc.concat(q3)
+        
         options = options.concat(numberc)
-
       }
       
       if (spcinclude === true) {
-        // q4 = specialc.concat(q4)
+        
         options = options.concat(specialc)
-
       }
 
-      if ((loinclude === false)&&(upinclude === false)&&(numinclude === false)&&(spcinclude === false)){
-
-        alert("At least one character type must be selected. Please try again for different character type.")
-        return
-      } else { 
-
-      }
       
-      // let options = q1.concat(q2, q3, q4)
       console.log(lletters)
       console.log(uletters)
       console.log(numberc)

@@ -14,26 +14,30 @@ let allc = lletters.concat(uletters, numberc, specialc)
 
 function writePassword() {
   
-  let charcount = prompt("Specify password character count with number between 8 - 128: ");
-  if (isNaN(charcount)) {
-    alert("Please input a number value specifying a password length between 8 - 128 characters and try again.")
-    return      
-  } else {}
-  
-  let charcountn = parseInt(charcount, 10);
-  
-  if ((charcountn > 128)||(charcountn < 8)) {
-    alert("Password character length must be between 8 - 128 characters-- please try again.")
-    return
-  } else{}
-  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  
   passwordText.value = password;
+  
   
   function generatePassword(){
     
+    let charcount = prompt("Specify password character count with number between 8 - 128: ");
     
+    if (isNaN(charcount)) {
+      alert("Please input a number value specifying a password length between 8 - 128 characters and try again.")
+      return      
+    } else {
+      
+    }
+    
+    let charcountn = parseInt(charcount, 10);
+    
+    if ((charcountn > 128)||(charcountn < 8)) {
+      alert("Password character length must be between 8 - 128 characters-- please try again.")
+      return
+    } else{
+    }
     
   
     
@@ -46,27 +50,36 @@ function writePassword() {
       let numinclude = confirm("Include number characters?");
       let spcinclude = confirm("Include special characters?");
       
-      let q1 = [""];
-      let q2 = [""];
-      let q3 = [""];
-      let q4 = [""];
+      // let q1 = [""];
+      // let q2 = [""];
+      // let q3 = [""];
+      // let q4 = [""];
       
+      let options = [];
 
       if (loinclude === true) {
-        q1 = lletters.concat(q1)
-      }else{}
+        // q1 = lletters.concat(q1)
+        options = options.concat(lletters)
+
+      }
       
       if (upinclude === true) {
-        q2 = uletters.concat(q2)
-      }else{}
+        // q2 = uletters.concat(q2)
+        options = options.concat(uletters)
+
+      }
       
       if (numinclude === true) {
-        q3 = numberc.concat(q3)
-      }else{}
+        // q3 = numberc.concat(q3)
+        options = options.concat(numberc)
+
+      }
       
       if (spcinclude === true) {
-        q4 = specialc.concat(q4)
-      }else{}
+        // q4 = specialc.concat(q4)
+        options = options.concat(specialc)
+
+      }
 
       if ((loinclude === false)&&(upinclude === false)&&(numinclude === false)&&(spcinclude === false)){
 
@@ -76,7 +89,13 @@ function writePassword() {
 
       }
       
-      let options = q1.concat(q2, q3, q4)
+      // let options = q1.concat(q2, q3, q4)
+      console.log(lletters)
+      console.log(uletters)
+      console.log(numberc)
+      console.log(specialc)
+      console.log(allc)
+      console.log(options)
       return options
 
     }       

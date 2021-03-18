@@ -14,30 +14,26 @@ let allc = lletters.concat(uletters, numberc, specialc)
 
 function writePassword() {
   
+  let charcount = prompt("Specify password character count with number between 8 - 128: ");
+  if (isNaN(charcount)) {
+    alert("Please input a number value specifying a password length between 8 - 128 characters and try again.")
+    return      
+  } else {}
+  
+  let charcountn = parseInt(charcount, 10);
+  
+  if ((charcountn > 128)||(charcountn < 8)) {
+    alert("Password character length must be between 8 - 128 characters-- please try again.")
+    return
+  } else{}
+  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  
   passwordText.value = password;
-  
   
   function generatePassword(){
     
-    let charcount = prompt("Specify password character count with number between 8 - 128: ");
     
-    if (isNaN(charcount)) {
-      alert("Please input a number value specifying a password length between 8 - 128 characters and try again.")
-      return      
-    } else {
-      
-    }
-    
-    let charcountn = parseInt(charcount, 10);
-    
-    if ((charcountn > 128)||(charcountn < 8)) {
-      alert("Password character length must be between 8 - 128 characters-- please try again.")
-      return
-    } else{
-    }
     
   
     

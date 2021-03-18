@@ -39,56 +39,99 @@ function writePassword() {
 
     function buildoptions(){
       
-      
+      let loinclude = confirm("Include lowercase character? \nLowercase letters are used by default if no character type is selected.")
       let upinclude = confirm("Include uppercase characters?");
       let numinclude = confirm("Include number characters?");
       let spcinclude = confirm("Include special characters?");
       
       
-      if ((upinclude === true) && (numinclude === true) && (spcinclude === true)) {
+      if ((loinclude === true) && (upinclude === true) && (numinclude === true) && (spcinclude === true)) {
         
         let options = lletters.concat(uletters, numberc, specialc) 
         return options       
         
-      } else if ((upinclude === true) && (numinclude === true) && (spcinclude === false)){
+      } else if ((loinclude === true) && (upinclude === true) && (numinclude === true) && (spcinclude === false)){
         
         let options = lletters.concat(uletters, numberc)
         return options;
         
-      } else if ((upinclude === true) && (numinclude === false) && (spcinclude === false)){
+      } else if ((loinclude === true) && (upinclude === true) && (numinclude === false) && (spcinclude === false)){
         
         let options = lletters.concat(uletters)
         return options
         
-      } else if ((upinclude === false) && (numinclude === false) && (spcinclude === false)){
+      } else if ((loinclude === true) && (upinclude === false) && (numinclude === false) && (spcinclude === false)){
         
         let options = lletters
         return options
         
-      } else if ((upinclude === false) && (numinclude === true) && (spcinclude === true)){
+      } else if ((loinclude === true) && (upinclude === false) && (numinclude === true) && (spcinclude === true)){
         
         let options = lletters.concat(numberc, specialc)
         return options
         
-      } else if ((upinclude === false) && (numinclude === true) && (spcinclude === false)){
+      } else if ((loinclude === true) && (upinclude === false) && (numinclude === true) && (spcinclude === false)){
         
-        let options = lletters.concat(numberc)
+        let options = lletters.concat(numberc, specialc)
         return options
         
-      } else if ((upinclude === false) && (numinclude === false) && (spcinclude === true)){
+      } else if ((loinclude === true) && (upinclude === false) && (numinclude === false) && (spcinclude === true)){
         
         let options = lletters.concat(specialc)
         return options
         
-        // only (upinclude === true) && (numinclude === false) && (spcinclude === true) remaining  
-      } else {
+      } else if ((loinclude === true) && (upinclude === true) && (numinclude === false) && (spcinclude === true)){
         
         let options = lletters.concat(uletters, specialc)
         return options
+
+      } else if ((loinclude === false) && (upinclude === true) && (numinclude === true) && (spcinclude === true)) {
         
-        // Continue else if statements if lowercase toggle necessary
-      } return      
-    }    
+        let options = uletters.concat(numberc, specialc) 
+        return options       
+        
+      } else if ((loinclude === false) && (upinclude === true) && (numinclude === true) && (spcinclude === false)){
+        
+        let options = uletters.concat(numberc)
+        return options;
+        
+      } else if ((loinclude === false) && (upinclude === true) && (numinclude === false) && (spcinclude === false)){
+        
+        let options = (uletters)
+        return options
+        
+      } else if ((loinclude === false) && (upinclude === false) && (numinclude === false) && (spcinclude === false)){
+        
+        alert("At least one character type must be selected. Using default (lowercase only) for password generation. Please try again for different character type.")
+        let options = lletters
+        return options
+        
+      } else if ((loinclude === false) && (upinclude === false) && (numinclude === true) && (spcinclude === true)){
+        
+        let options = numberc.concat(specialc)
+        return options
+        
+      } else if ((loinclude === false) && (upinclude === false) && (numinclude === true) && (spcinclude === false)){
+        
+        let options = numberc
+        return options
+        
+      } else if ((loinclude === false) && (upinclude === false) && (numinclude === false) && (spcinclude === true)){
+        
+        let options = specialc
+        return options
+        
+      } else if ((loinclude === false) && (upinclude === true) && (numinclude === false) && (spcinclude === true)){
+        
+        let options = uletters.concat(specialc)
+        return options
+
+      } else {
+
+      }  
+      return            
+    }       
+      
     
     let options = buildoptions();
     var output = "";

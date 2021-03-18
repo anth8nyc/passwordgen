@@ -29,11 +29,60 @@ function writePassword() {
     let charcountn = parseInt(charcount, 10);
     
     
-  
     
+    function buildoptions(){
+      
+      let upinclude = confirm("Include uppercase characters?");
+      let numinclude = confirm("Include number characters?");
+      let spcinclude = confirm("Include special characters?");
+      
+      
+      if ((upinclude === true) && (numinclude === true) && (spcinclude === true)) {
+        
+        let options = lletters.concat(uletters, numberc, specialc) 
+        return options       
+        
+      } else if ((upinclude === true) && (numinclude === true) && (spcinclude === false)){
+        
+        let options = lletters.concat(uletters, numberc)
+        return options;
+        
+      } else if ((upinclude === true) && (numinclude === false) && (spcinclude === false)){
+        
+        let options = lletters.concat(uletters)
+        return options
+        
+      } else if ((upinclude === false) && (numinclude === false) && (spcinclude === false)){
+        
+        let options = lletters
+        return options
+        
+      } else if ((upinclude === false) && (numinclude === true) && (spcinclude === true)){
+        
+        let options = lletters.concat(numberc, specialc)
+        return options
+        
+      } else if ((upinclude === false) && (numinclude === true) && (spcinclude === false)){
+        
+        let options = lletters.concat(numberc, specialc)
+        return options
+        
+      } else if ((upinclude === false) && (numinclude === false) && (spcinclude === true)){
+        
+        let options = lletters.concat(specialc)
+        return options
+        
+        // if ((upinclude === true) && (numinclude === false) && (spcinclude === true)
+      } else {
+        
+        let options = lletters.concat(uletters, specialc)
+        return options
+        
+        // Continue else if statements if lowercase toggle necessary
+      } return      
+    }    
     
-  
-    let options = allc;
+    let options = buildoptions();
     var output = "";
     var asize = options.length;
     for (var i = 0; i < charcountn; ++i) {

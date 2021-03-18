@@ -2,27 +2,59 @@
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 
 // Arrays of characters
 
-let lletters = "abcdefghijklmnopqrstuvwxyz".split("") 
-let uletters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
-let numberc = "1234567890".split("")
-let specialc = " !U+0022#$%&U+0027()*+,-./:;<=>?@[\]^_`{|}~".split("")
+let lletters = "abcdefghijklmnopqrstuvwxyz".split(""); 
+let uletters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let numberc = "1234567890".split("");
+let specialc1 = ["'", '"', "\\"];
+let specialc2 = " !#$%&()*+,-./:;<=>?@[]^_`{|}~".split("");
+let specialc = specialc1.concat(specialc2);
+let allc = lletters.concat(uletters, numberc, specialc)
 
-console.log(lletters)
-console.log(uletters)
-console.log(numberc)
-console.log(specialc)
+
+function writePassword() {
+  
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  
+  passwordText.value = password;
+  
+  
+  function generatePassword(){
+    
+    let charcount = prompt("Specify password character count with number between 8 - 128: ");
+    let charcountn = parseInt(charcount, 10);
+    
+    
+  
+    
+    
+  
+    let options = allc;
+    var output = "";
+    var asize = options.length;
+    for (var i = 0; i < charcountn; ++i) {
+      output = output + options[(Math.floor(Math.random() * asize))];
+    } return output;    
+    
+  }  
+  
+}
+
+// if ((charcountn < 129) && (charcountn > 7)) {
+  
+//  function buildoptions()
+  
+  
+// }else {
+//   alert("Character count must be between 8 - 128 characters!");
+//   function generatePassword();
+// }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 

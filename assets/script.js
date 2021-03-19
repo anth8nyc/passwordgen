@@ -23,13 +23,13 @@ function writePassword() {
     return
   } else { }
   //Asks user to select character set criteria
-  let loinclude = confirm("Include lowercase character?");
-  let upinclude = confirm("Include uppercase characters?");
-  let numinclude = confirm("Include numerical characters?");
-  let spcinclude = confirm("Include special characters?");
+  let loinclude = confirm("Include lowercase characters?\n\nSelect 'Cancel' to exclude character style.");
+  let upinclude = confirm("Include uppercase characters?\n\nSelect 'Cancel' to exclude character style.");
+  let numinclude = confirm("Include numerical characters?\n\nSelect 'Cancel' to exclude character style.");
+  let spcinclude = confirm("Include special characters?\n\nSelect 'Cancel' to exclude character style.");
 
   if ((loinclude === false)&&(upinclude === false)&&(numinclude === false)&&(spcinclude === false)){
-    alert("At least one character type must be selected. Please try again for different character type.");
+    alert("At least one character type must be selected. Please try again with at least one character type.");
     return
   } else { }
   //Calls internal functions and defines output for current function
